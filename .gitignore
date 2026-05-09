@@ -1,0 +1,36 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+
+# Secrets and private keys
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+*.kdbx
+*secret*
+*secrets*
+*credential*
+*credentials*
+
+# Local app data and exports
+output/*.xlsx
+output/
+storage/
+storage/templates/*.docx
+
+# Build and packaging artifacts
+build/
+dist/
+*.spec
+*.exe
+
+# Archived/local-only folders
+legacy-desktop/
+.claude/

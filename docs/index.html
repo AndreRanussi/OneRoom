@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OneRoom Contract Webapp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+
+  <main class="shell">
+    <header class="hero card">
+      <p class="kicker">Browser Edition</p>
+      <h1>OneRoom Contract Builder</h1>
+      <p class="lede">
+        Static webapp for GitHub Pages. Import tenant rows, edit contract fields, and export clean CSV or JSON output.
+      </p>
+      <div class="status-row">
+        <span class="badge">No server required</span>
+        <span class="badge">Data stays in your browser</span>
+        <span class="badge" id="row-count-badge">0 rows loaded</span>
+      </div>
+    </header>
+
+    <section class="card grid-two">
+      <div>
+        <h2>1) Import Data</h2>
+        <p>Load tenant records from CSV or JSON, or start with sample records.</p>
+        <div class="stack">
+          <label class="file-input">
+            <input type="file" id="data-file" accept=".csv,.json" />
+            <span>Choose CSV or JSON</span>
+          </label>
+          <div class="button-row">
+            <button id="load-sample" class="secondary" type="button">Load Sample Data</button>
+            <button id="clear-all" class="ghost" type="button">Clear All</button>
+          </div>
+          <p class="tiny" id="import-summary">No file loaded yet.</p>
+        </div>
+      </div>
+
+      <div>
+        <h2>2) Landlord Profile</h2>
+        <p>Create reusable landlord profiles and apply them to all rows.</p>
+        <div class="stack">
+          <input id="landlord-name" type="text" placeholder="Landlord name" />
+          <input id="landlord-phone" type="text" placeholder="Telephone number" />
+          <input id="landlord-email" type="text" placeholder="Email address" />
+          <input id="landlord-signature" type="text" placeholder="Signature image URL (optional)" />
+          <div class="button-row">
+            <button id="save-landlord" class="secondary" type="button">Save Profile</button>
+            <button id="apply-landlord" class="primary" type="button">Apply to All Rows</button>
+          </div>
+          <select id="landlord-select">
+            <option value="">Select saved landlord profile</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <h2>3) Review and Edit Rows</h2>
+        <div class="button-row">
+          <button id="add-row" class="secondary" type="button">Add Row</button>
+          <button id="autofill-dates" class="ghost" type="button">Set Today and End Date</button>
+        </div>
+      </div>
+      <div class="table-wrap" id="table-wrap">
+        <p class="tiny">Import data to begin editing.</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>4) Standard Template</h2>
+      <p>Use the built-in tenancy DOCX template with no manual upload step.</p>
+      <div class="button-row">
+        <a id="download-standard-template" class="button-link secondary" href="templates/Tenancy Agreement New.docx" download>Download Standard DOCX Template</a>
+      </div>
+      <p class="tiny" id="template-status">Checking template availability...</p>
+    </section>
+
+    <section class="card grid-two">
+      <div>
+        <h2>5) Placeholders</h2>
+        <p>Copy tokens for your Word template and preview a row payload.</p>
+        <div class="stack">
+          <button id="copy-placeholders" class="secondary" type="button">Copy Placeholder Tokens</button>
+          <select id="preview-row"></select>
+          <pre id="row-preview" class="preview"></pre>
+        </div>
+      </div>
+      <div>
+        <h2>6) Export</h2>
+        <p>Download data for downstream template tools.</p>
+        <div class="stack">
+          <button id="export-csv" class="primary" type="button">Export CSV</button>
+          <button id="export-json" class="secondary" type="button">Export JSON</button>
+          <p class="tiny">Exports include all visible columns in the editor.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
